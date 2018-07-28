@@ -113,45 +113,41 @@
                                 Kind="FormatPaint" />
                         </materialDesign:PopupBox.ToggleContent>
                         
-                        <DockPanel LastChildFill="True">
-                            <ItemsControl
-                                DockPanel.Dock="Top"
-                                Margin="4"
-                                Background="Transparent"
-                                ItemsSource="{Binding Hues}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Viewbox
-                                            Width="22"
-                                            Height="22"
-                                            Margin="2">
-                                            <Button
-                                                Margin="2"
-                                                BorderBrush="{DynamicResource GrayBrush2}"
-                                                BorderThickness="0"
-                                                Command="{Binding ElementName=Row, Path=DataContext.HighlightCommand}"
-                                                CommandParameter="{Binding}"
-                                                SnapsToDevicePixels="True"
-                                                Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                                ToolTip="{Binding}"
-                                                UseLayoutRounding="True">
-                                                <Button.Background>
-                                                    <SolidColorBrush Color="{Binding Background, Mode=OneTime}" />
-                                                </Button.Background>
-                                            </Button>
-                                        </Viewbox>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
+                        <ItemsControl
+                            DockPanel.Dock="Top"
+                            Margin="4"
+                            Background="Transparent"
+                            ItemsSource="{Binding Hues}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Viewbox
+                                        Width="22"
+                                        Height="22"
+                                        Margin="2">
+                                        <Button
+                                            Margin="2"
+                                            BorderBrush="{DynamicResource GrayBrush2}"
+                                            BorderThickness="0"
+                                            Command="{Binding ElementName=Row, Path=DataContext.HighlightCommand}"
+                                            CommandParameter="{Binding}"
+                                            SnapsToDevicePixels="True"
+                                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                            ToolTip="{Binding}"
+                                            UseLayoutRounding="True">
+                                            <Button.Background>
+                                                <SolidColorBrush Color="{Binding Background, Mode=OneTime}" />
+                                            </Button.Background>
+                                        </Button>
+                                    </Viewbox>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
 
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <UniformGrid Columns="8" />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                            </ItemsControl>
-                        </DockPanel>
-
-                       
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="8" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
                     </materialDesign:PopupBox>
                     
                     <ComboBox Grid.Column="4"
