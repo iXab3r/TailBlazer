@@ -81,7 +81,6 @@ namespace TailBlazer.Controls
         {
             base.OnApplyTemplate();
             _textBlock = (TextBlock)Template.FindName("PART_TEXT", this);
-
             //const string sample = "The quick brown fox jumps over the lazy dog";
             //var stringSize = this.MeasureString(sample);
             //var widthPerChar = stringSize.Width / sample.Length;
@@ -103,6 +102,9 @@ namespace TailBlazer.Controls
             }
 
             var formattedText = FormattedText.AsArray();
+
+            Background = formattedText.FirstOrDefault(x => x.BackgroundHue != null)?.BackgroundHue?.BackgroundBrush;
+            
             if (formattedText.Length == 1)
             {
                 var line = formattedText[0];

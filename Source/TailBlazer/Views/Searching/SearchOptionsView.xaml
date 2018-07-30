@@ -10,6 +10,8 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:infrastucture="clr-namespace:TailBlazer.Infrastucture"
     xmlns:searching="clr-namespace:TailBlazer.Views.Searching"
+    xmlns:search="clr-namespace:TailBlazer.Domain.FileHandling.Search;assembly=TailBlazer.Domain"
+    xmlns:infrastructure="clr-namespace:TailBlazer.Domain.Infrastructure;assembly=TailBlazer.Domain"
     d:DataContext="{d:DesignInstance searching:SearchOptionsViewModel}"
     mc:Ignorable="d">
 
@@ -110,8 +112,9 @@
                                 Foreground="{Binding Background.Value}"
                                 Kind="FormatPaint" />
                         </materialDesign:PopupBox.ToggleContent>
-
+                        
                         <ItemsControl
+                            DockPanel.Dock="Top"
                             Margin="4"
                             Background="Transparent"
                             ItemsSource="{Binding Hues}">
@@ -146,15 +149,15 @@
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
                     </materialDesign:PopupBox>
-
-                    <CheckBox
-                        Grid.Column="4"
-                        Margin="4,0,0,0"
-                        VerticalAlignment="Center"
-                        Content="Highlight"
-                        IsChecked="{Binding Highlight}"
-                        ToolTip="Highlight text within the line" />
-
+                    
+                    <ComboBox Grid.Column="4"
+                              ToolTip="Highlight text within the line" 
+                              Margin="14,0,14,0"
+                              Width="150"
+                              VerticalAlignment="Center"
+                              SelectedValue="{Binding Highlight}"
+                              ItemsSource="{Binding Source={infrastructure:EnumBindingSource {x:Type search:HighlightingMode}}}">
+                    </ComboBox>
 
                     <CheckBox
                         Grid.Column="5"
@@ -163,7 +166,6 @@
                         Content="Filter"
                         IsChecked="{Binding Filter}"
                         ToolTip="Create a filter which matches this value" />
-
 
                     <CheckBox
                         Grid.Column="6"
